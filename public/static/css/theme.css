@@ -1757,7 +1757,7 @@ section .overlay-text {
   bottom: 0;
   margin: auto;
 }
-.contactForm > span {
+.contactForm span {
   display: block;
   margin-bottom: 1em;
   font-size: 3em;
@@ -1765,6 +1765,11 @@ section .overlay-text {
   border-bottom: none;
   text-align: center;
 }
+
+.contactForm .response-subscribe {
+  font-size: 1.8em;
+}
+
 .contactForm input,
 .contactForm textarea {
   background: none;
