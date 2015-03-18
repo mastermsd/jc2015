@@ -71,7 +71,7 @@ function owlCarousel() {
 
     $(".carousel-items").owlCarousel({
         lazyLoad: true,
-        items: 3,
+        items: 4,
         theme: "owl-theme-main"
     });
 
