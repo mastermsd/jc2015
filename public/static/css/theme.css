@@ -1316,6 +1316,23 @@ section {
   padding: 4em 0;
   position: relative;
 }
+
+section#instagram {
+  padding: 0;
+  height: 300px;
+}
+
+#instagram .instagram-lite {
+  width: 8700px;
+}
+
+#instagram .instagram-lite img {
+  display: inline-block;
+  float: left;
+  width: auto;
+  height: 300px;
+}
+
 section:before,
 section:after {
   position: absolute;

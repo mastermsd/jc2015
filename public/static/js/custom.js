@@ -23,6 +23,7 @@ function init() {
     tooltips();
     onePageScroll();
     scrollAnchor();
+    instagram();
 }
 
 
@@ -512,4 +513,13 @@ function subscribe() {
         });
 
     });
+}
+
+function instagram () {
+    $('.instagram-lite').instagramLite({
+        clientID: '4b98b1a82f2e44caa026f0cc5ee2b97d',
+        username: 'jc_generation',
+        list: false
+    });
+
 }
