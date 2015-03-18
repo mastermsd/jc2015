@@ -1,0 +1,124 @@
+function overlay() {
+  'use strict';
+
+  var container = $('.container'),
+    triggerBtns = $('.trigger-overlay'),
+    overlay = $('.overlay');
+//console.log(triggerBtns);
+
+  var transEndEventNames = {
+    'WebkitTransition': 'webkitTransitionEnd',
+    'MozTransition': 'transitionend',
+    'OTransition': 'oTransitionEnd',
+    'msTransition': 'MSTransitionEnd',
+    'transition': 'transitionend'
+  },
+  transEndEventName = transEndEventNames[ Modernizr.prefixed( 'transition' ) ],
+  support = { transitions : Modernizr.csstransitions };
+
+  var closeBttn = overlay.find( 'button.overlay-close' );
+
+  triggerBtns.on('click', toggleOverlay);
+  closeBttn.on('click', toggleOverlay);
+
+  function toggleOverlay() {
+    var triggerType = $(this).attr('data-trigger');
+    var targetOverlay = $('overlay-'+ triggerType);
+    if (targetOverlay.hasClass('open')) {
+      targetOverlay.removeClass('open');
+      container.removeClass('overlay-open');
+      targetOverlay.addClass('close-me');
+
+      var onEndTransitionFn = function( ev ) {
+        if( support.transitions ) {
+          if( ev.propertyName !== 'visibility' ) {
+            return;
+          }
+
+          $(this).off( transEndEventName, onEndTransitionFn );
+        }
+
+        targetOverlay.removeClass('close-me');
+
+      };
+
+      if (support.transitions) {
+        targetOverlay.on(transEndEventName, onEndTransitionFn);
+      } else {
+        onEndTransitionFn();
+      }
+
+
+    } else if (!targetOverlay.hasClass('close-me')) {
+      targetOverlay.addClass('open');
+      container.addClass('overlay-open');
+    }
+
+
+
+/*    if( classie.has( overlay, 'open' ) ) {
+      classie.remove( overlay, 'open' );
+      classie.remove( container, 'overlay-open' );
+      classie.add( overlay, 'close-me' );
+      var onEndTransitionFn = function( ev ) {
+        if( support.transitions ) {
+          if( ev.propertyName !== 'visibility' ) return;
+          this.removeEventListener( transEndEventName, onEndTransitionFn );
+        }
+        classie.remove( overlay, 'close-me' );
+      };
+      if( support.transitions ) {
+        overlay.addEventListener( transEndEventName, onEndTransitionFn );
+      }
+      else {
+        onEndTransitionFn();
+      }
+    }
+    else if( !classie.has( overlay, 'close-me' ) ) {
+      classie.add( overlay, 'open' );
+      classie.add( container, 'overlay-open' );
+    }*/
+
+  }
+
+  //triggerBtns.addEventListener( 'click', toggleOverlay );
+
+}
+
+
+
+
+function subscribe() {
+    'use strict';
+
+    $('#subscribeForm').submit( function (e) {
+
+        e.preventDefault();
+        var thisForm = $(this);
+
+        $.ajax({
+            type: thisForm.attr('method'),
+            url: thisForm.attr('action'),
+            data: thisForm.serialize(),
+            cache : false,
+            dataType : 'json',
+            contentType : "application/json; charset=utf-8",
+            error : function(err) {
+
+                alert("Could not connect to the registration server. Please try again later.");
+            },
+            success : function(data) {
+                if (data.result != "success") {
+                    // Something went wrong, do something to notify the user. maybe alert(data.msg);
+                    alert('something went wrong');
+                } else {
+
+                    // It worked, carry on...
+                    thisForm.find('.response-subscribe').append(data.msg);
+                    thisForm.find('.subscribeform-container').hide();
+                }
+            }
+        });
+
+    });
+}
