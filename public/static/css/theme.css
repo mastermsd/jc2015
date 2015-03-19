@@ -1320,10 +1320,24 @@ section {
 section#instagram {
   padding: 0;
   height: 300px;
+  width: 100%;
+  overflow-x: scroll;
+  -ms-overflow-style: none;
+}
+
+section#instagram::-webkit-scrollbar {
+    overflow: hidden;
+    display: none;
 }
 
 #instagram .instagram-lite {
-  width: 8700px;
+  width: 4350px;
+  -ms-overflow-style: none;
+}
+
+#instagram .instagram-lite::-webkit-scrollbar {
+    overflow: hidden;
+    display: none;
 }
 
 #instagram .instagram-lite img {
@@ -2265,6 +2279,15 @@ section .overlay-text {
   line-height: 30px;
 
 }
+
+section#instagram {
+  height: 190px;
+}
+
+#instagram .instagram-lite img {
+  height: 190px;
+}
+
   .img-overlap {
     margin-bottom: -110px;
   }
@@ -2366,6 +2389,15 @@ section .overlay-text {
   }
 }
 @media (max-width: 480px) {
+
+section#instagram {
+  height: 145px;
+}
+
+#instagram .instagram-lite img {
+  height: 145px;
+}
+
   .cbp-af-header h1 a {
     line-height: 1em;
   }
