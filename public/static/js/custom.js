@@ -18,6 +18,7 @@ $(document).ready(function() {
 /* --- initialize functions on window load here -------------- */
 
 function init() {
+    'use strict';
     overlayContact();
     overlaySubscribe();
     tooltips();
@@ -26,19 +27,17 @@ function init() {
     instagram();
 }
 
-
-
 /* --- Full Screen Container ------------- */
 
 function fullScreenContainer() {
-    "use strict";
+    'use strict';
 
     // Set Initial Screen Dimensions
 
-    var screenWidth = $(window).width() + "px";
-    var screenHeight = $(window).height() + "px";
+    var screenWidth = $(window).width() + 'px';
+    var screenHeight = $(window).height() + 'px';
 
-    $(".intro, .intro .item").css({
+    $('.intro, .intro .item').css({
         width: screenWidth,
         height: screenHeight
     });
@@ -49,12 +48,12 @@ function fullScreenContainer() {
 
         // Fetch Screen Dimensions
 
-        var screenWidth = $(window).width() + "px";
-        var screenHeight = $(window).height() + "px";
+        var screenWidth = $(window).width() + 'px';
+        var screenHeight = $(window).height() + 'px';
 
         // Set Slides to new Screen Dimensions
 
-        $(".intro, .intro .item").css({
+        $('.intro, .intro .item').css({
             width: screenWidth,
             height: screenHeight
         });
@@ -68,24 +67,24 @@ function fullScreenContainer() {
 /* --- owlCarousel ------------- */
 
 function owlCarousel() {
-    "use strict";
+    'use strict';
 
-    $(".carousel-items").owlCarousel({
+    $('.carousel-items').owlCarousel({
         lazyLoad: true,
         items: 4,
-        theme: "owl-theme-main"
+        theme: 'owl-theme-main'
     });
 
-    $(".intro.owl-carousel").owlCarousel({
+    $('.intro.owl-carousel').owlCarousel({
         lazyLoad: true,
-        lazyEffect: "fade",
+        lazyEffect: 'fade',
         singleItem: true,
         navigation: true,
         navigationText: ['<i class="fa fa-angle-left"></i>', '<i class="fa fa-angle-right"></i>'],
         slideSpeed: 450,
         pagination: false,
-        transitionStyle: "fade",
-        theme: "owl-theme-featured"
+        transitionStyle: 'fade',
+        theme: 'owl-theme-featured'
 
     });
 }
@@ -95,7 +94,7 @@ function owlCarousel() {
 /* --- Tooltips ------------------- */
 
 function tooltips() {
-    "use strict";
+    'use strict';
 
     $('.tooltips').tooltip();
 }
@@ -111,7 +110,7 @@ window.scrollReveal = new scrollReveal();
 /* --- magnific popup ------------------- */
 
 function magnificPopup() {
-    "use strict";
+    'use strict';
 
     // Gallery
     $('.popup-gallery').magnificPopup({
@@ -151,7 +150,7 @@ function magnificPopup() {
             enabled: true, // By default it's false, so don't forget to enable it
 
             duration: 300, // duration of the effect, in milliseconds
-            easing: 'ease-in-out', // CSS transition easing function 
+            easing: 'ease-in-out', // CSS transition easing function
 
             // The "opener" function should return the element from which popup will be zoomed in
             // and to which popup will be scaled down
@@ -187,7 +186,7 @@ function magnificPopup() {
 /* --- Isotope ------------------- */
 
 function isotope() {
-    "use strict";
+    'use strict';
 
     var $container = $('.grid');
 
@@ -216,11 +215,11 @@ function isotope() {
 /* --- Scroll to Anchor ------------------- */
 
 function scrollAnchor() {
-    "use strict";
+    'use strict';
 
     // scroll to specific anchor
     $('.scroll').click(function() {
-        if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') && location.hostname == this.hostname) {
+        if (location.pathname.replace(/^\//, '') === this.pathname.replace(/^\//, '') && location.hostname === this.hostname) {
             var target = $(this.hash);
             target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
             if (target.length) {
@@ -238,7 +237,7 @@ function scrollAnchor() {
 /* --- Modal overlay (used specifically for contact form) ------------------- */
 
 function overlayContact() {
-    "use strict";
+    'use strict';
 
     var container = document.querySelector('div.container'),
         triggerBttn = document.getElementById('trigger-overlay-contact'),
@@ -284,7 +283,7 @@ function overlayContact() {
 }
 
 function overlaySubscribe() {
-    "use strict";
+    'use strict';
 
     var container = document.querySelector('div.container'),
         triggerBttn = document.getElementById('trigger-overlay-subscribe'),
@@ -332,7 +331,7 @@ function overlaySubscribe() {
 /* --- One Page Scroll ------------------- */
 
 function onePageScroll() {
-    "use strict";
+    'use strict';
 
     $('.nav').onePageNav({
         currentClass: 'current',
@@ -356,7 +355,7 @@ function onePageScroll() {
 
 
 $(window).scroll(function() {
-    "use strict";
+    'use strict';
 
     var windowpos = $(window).scrollTop();
 
@@ -369,13 +368,13 @@ $(window).scroll(function() {
 
 //Placeholder fixed for Internet Explorer
 $(function() {
-    "use strict";
+    'use strict';
 
-    var input = document.createElement("input");
-    if (('placeholder' in input) == false) {
+    var input = document.createElement('input');
+    if (('placeholder' in input) === false) {
         $('[placeholder]').focus(function() {
             var i = $(this);
-            if (i.val() == i.attr('placeholder')) {
+            if (i.val() === i.attr('placeholder')) {
                 i.val('').removeClass('placeholder');
                 if (i.hasClass('password')) {
                     i.removeClass('password');
@@ -384,8 +383,8 @@ $(function() {
             }
         }).blur(function() {
             var i = $(this);
-            if (i.val() == '' || i.val() == i.attr('placeholder')) {
-                if (this.type == 'password') {
+            if (i.val() === '' || i.val() === i.attr('placeholder')) {
+                if (this.type === 'password') {
                     i.addClass('password');
                     this.type = 'text';
                 }
@@ -394,9 +393,9 @@ $(function() {
         }).blur().parents('form').submit(function() {
             $(this).find('[placeholder]').each(function() {
                 var i = $(this);
-                if (i.val() == i.attr('placeholder'))
+                if (i.val() === i.attr('placeholder'))
                     i.val('');
-            })
+            });
         });
     }
 });
@@ -408,9 +407,9 @@ $(function() {
    example is taken from jqBootstrapValidation docs
   */
 $(function() {
-    "use strict";
+    'use strict';
 
-    $("input,textarea").jqBootstrapValidation({
+    $('input,textarea').jqBootstrapValidation({
         preventSubmit: true,
         submitError: function($form, event, errors) {
             // something to have when submit produces an error ?
@@ -422,9 +421,9 @@ $(function() {
 
             event.preventDefault(); // prevent default submit behaviour
             // get values from FORM
-            var name = $("input#name").val();
-            var email = $("input#email").val();
-            var message = $("textarea#message").val();
+            var name = $('input#name').val();
+            var email = $('input#email').val();
+            var message = $('textarea#message').val();
             var firstName = name; // For Success/Failure Message
             // Check for white space in name for Success/Fail message
             if (firstName.indexOf(' ') >= 0) {
@@ -432,8 +431,8 @@ $(function() {
             }
 
           $.ajax({
-              url: "contact_me.php",
-              type: "POST",
+              url: 'contact_me.php',
+              type: 'POST',
               data: {
                   name: name,
                   email: email,
@@ -442,41 +441,41 @@ $(function() {
               cache: false,
               success: function() {
                   // Success message
-                  $('#success').html("<div class='alert alert-success'>");
-                  $('#success > .alert-success').html("<button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;")
-                      .append("</button>");
+                  $('#success').html('<div class="alert alert-success">');
+                  $('#success > .alert-success').html('<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;')
+                      .append('</button>');
                   $('#success > .alert-success')
-                      .append("<strong>Your message has been sent. </strong>");
+                      .append('<strong>Your message has been sent. </strong>');
                   $('#success > .alert-success')
                       .append('</div>');
 
                   //clear all fields
-                  $('.contactForm').trigger("reset");
+                  $('.contactForm').trigger('reset');
               },
               error: function() {
                   // Fail message
-                  $('#success').html("<div class='alert alert-danger'>");
-                  $('#success > .alert-danger').html("<button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;")
-                      .append("</button>");
-                  $('#success > .alert-danger').append("<strong>Sorry " + firstName + " it seems that my mail server is not responding...</strong> Could you please email me directly to <a href='mailto:me@example.com?Subject=Message_Me from myprogrammingblog.com;>me@example.com</a> ? Sorry for the inconvenience!");
+                  $('#success').html('<div class="alert alert-danger">');
+                  $('#success > .alert-danger').html('<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;')
+                      .append('</button>');
+                  $('#success > .alert-danger').append('<strong>Sorry ' + firstName + ' it seems that my mail server is not responding...</strong> Could you please email me directly to <a href="mailto:me@example.com?Subject=Message_Me from myprogrammingblog.com;">me@example.com</a> ? Sorry for the inconvenience!');
                   $('#success > .alert-danger').append('</div>');
                   //clear all fields
-                  $('.contactForm').trigger("reset");
+                  $('.contactForm').trigger('reset');
               }
 
-            })
-            
+            });
+
           }
 
         },
         filter: function() {
-            return $(this).is(":visible");
+            return $(this).is(':visible');
         },
     });
 
-    $("a[data-toggle=\"tab\"]").click(function(e) {
+    $('a[data-toggle=\"tab\"]').click(function(e) {
         e.preventDefault();
-        $(this).tab("show");
+        $(this).tab('show');
     });
 });
 
@@ -494,13 +493,13 @@ function subscribe() {
             data: thisForm.serialize(),
             cache: false,
             dataType: 'json',
-            contentType: "application/json; charset=utf-8",
+            contentType: 'application/json; charset=utf-8',
             error: function(err) {
 
-                alert("Could not connect to the registration server. Please try again later.");
+                alert('Could not connect to the registration server. Please try again later.');
             },
             success: function(data) {
-                if (data.result != "success") {
+                if (data.result !== 'success') {
                     // Something went wrong, do something to notify the user. maybe alert(data.msg);
                     alert('something went wrong');
                 } else {
@@ -516,6 +515,7 @@ function subscribe() {
 }
 
 function instagram () {
+    'use strict';
     $('.instagram-lite').instagramLite({
         clientID: '4b98b1a82f2e44caa026f0cc5ee2b97d',
         username: 'jc_generation',
